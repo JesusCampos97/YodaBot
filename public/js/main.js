@@ -14,7 +14,7 @@ $("#formSendMessage").submit(function(e) {
     //reset the message on input
     $.ajax({
         type: "POST",
-        url: url.replace("http","https"),
+        url: url/*.replace("http","https")*/,
         data: form.serialize(), // serializes the form's elements.
         success: function(data)
         {
