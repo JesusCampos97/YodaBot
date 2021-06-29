@@ -8,7 +8,7 @@ $("#formSendMessage").submit(function(e) {
     text=document.getElementById('message').value;
     
     var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes();
+    var time = checkTime(today.getHours()) + ":" + checkTime(today.getMinutes());
     appendText(text,'R',time);
     document.getElementById('isWriting').style.display="block";
     //reset the message on input
@@ -22,7 +22,7 @@ $("#formSendMessage").submit(function(e) {
             response=data;
             document.getElementById('isWriting').style.display="none";
             var today = new Date();
-            var time = today.getHours() + ":" + today.getMinutes();
+            var time = checkTime(today.getHours()) + ":" + checkTime(today.getMinutes());
             appendText(response,'L',time);
         },
         error: function(e){
@@ -35,6 +35,10 @@ $("#formSendMessage").submit(function(e) {
         }
     });
 });
+
+function checkTime(i) {
+    return (i < 10) ? "0" + i : i;
+}
 
 function appendText(text,side,time){
 
